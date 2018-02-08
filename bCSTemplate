@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Basic settings
+site="_SITENAME_"
+host="_HOSTNAME_"
+user="_USERNAME_"
+pswd="_PASSWORD_"
+conn="_PROTOCOL_"
+util="_UTILITY_"
+
+# Mount resourse
+folder="$HOME/mnt/$site"
+mkdir $folder 2> /dev/null
+$util -o uid=$(id -u) $conn://$user:$pswd@$host $folder
+nautilus $folder
+wait
